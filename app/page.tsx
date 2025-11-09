@@ -34,7 +34,7 @@ export default function Page() {
 
     // run client-side tools that are automatically executed:
     async onToolCall({ toolCall }) {
-      // Check if it's a dynamic tool first for proper type narrowing
+
       if (toolCall.dynamic) {
         return;
       }
@@ -94,11 +94,10 @@ export default function Page() {
                 <MessageContent>
                   {message.parts.map((part) => {
                     switch (part.type) {
-                      // render text parts as simple text:
                       case 'text':
                         return part.text
 
-                      // for tool parts, use the typed tool part names:
+                      // for tools, use the typed tool part names:
                       case 'tool-addEntry':
                       case 'tool-retrieveAllEntries': {
                         return <div>

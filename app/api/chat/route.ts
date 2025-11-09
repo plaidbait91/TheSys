@@ -34,15 +34,14 @@ Your role is to help users manage their personal journal through a chat interfac
 - For "What is 2+2?" → "I'm only a journaling app assistant. I can help you add entries to your journal or find information you've previously logged."
 `,
     messages: convertToModelMessages(messages),
+    // these tools will be executed by client
     tools: {
-      // client-side tool that starts user interaction:
       addEntry: {
         description: 'Add a new entry to the journal.',
         inputSchema: z.object({
           message: z.string().describe('The contents of the entry to add to journal.'),
         }),
       },
-      // client-side tool that is automatically executed on the client:
       retrieveAllEntries: {
         description: 'Retrieve all entries from the journal.',
         inputSchema: z.object({}),
